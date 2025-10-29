@@ -3,10 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Menu, X, Download, Users, Target, Package, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const Landing = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [showBanner, setShowBanner] = useState(true);
+  const { toast } = useToast();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -164,18 +167,40 @@ const Landing = () => {
       </nav>
 
       {/* AppGallery Banner */}
-      <div className="fixed top-16 left-0 right-0 z-40 bg-primary text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center gap-3 flex-wrap">
-          <Download className="h-5 w-5" />
-          <span className="text-sm font-medium">Available on Huawei AppGallery</span>
-          <Button size="sm" variant="secondary" className="ml-2">
-            Download Now
-          </Button>
+      {showBanner && (
+        <div className="fixed top-16 left-0 right-0 z-40 bg-primary text-primary-foreground shadow-md">
+          <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 flex-1 justify-center flex-wrap">
+              <Download className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+              <span className="text-xs sm:text-sm font-medium">Available on Huawei AppGallery</span>
+              <Button 
+                size="sm" 
+                variant="secondary" 
+                className="text-xs sm:text-sm"
+                onClick={() => {
+                  toast({
+                    title: "Coming Soon",
+                    description: "The app will be available on Huawei AppGallery soon!",
+                  });
+                }}
+              >
+                Download
+              </Button>
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 flex-shrink-0"
+              onClick={() => setShowBanner(false)}
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Hero Section */}
-      <section id="hero" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section id="hero" className={`${showBanner ? 'pt-44' : 'pt-32'} pb-20 px-4 sm:px-6 lg:px-8 transition-all duration-300`}>
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
             Modern e-Invoice Solution
