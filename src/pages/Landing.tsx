@@ -11,6 +11,7 @@ import {
   Shield,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -60,53 +61,60 @@ const Landing = () => {
   ];
 
   const teamMembers = [
-    { name: "John Doe", role: "Project Lead", avatar: "👨‍💼" },
-    { name: "Jane Smith", role: "Lead Developer", avatar: "👩‍💻" },
+    {
+      name: "Alpha Chong Shu Siang",
+      role: "Project Lead",
+      image: "/alpha.jpeg",
+    },
+    { name: "Koo Ming Zhe", role: "Lead Developer", image: "/mz.JPG" },
   ];
 
   const mvpFeatures = [
     {
       icon: <Target className="h-8 w-8 text-primary" />,
-      title: "Invoice Creation",
+      title: "Smart Receipt Verification (AI-OCR)",
       description:
-        "Create professional invoices with all necessary details directly from your mobile device",
+        "Scan and match payment receipts from WhatsApp or uploads to invoices automatically.",
     },
     {
       icon: <Shield className="h-8 w-8 text-primary" />,
-      title: "Government Verification",
+      title: "Automated Follow-Ups",
       description:
-        "Automatic verification through government portal with secure QR code generation",
+        "Personalized messages and payment plan suggestions to improve collection rate.",
     },
     {
       icon: <Package className="h-8 w-8 text-primary" />,
-      title: "AI-Powered Delivery",
+      title: "Agentic Payment Tracking",
       description:
-        "Intelligent agent automatically sends verified e-invoices to customers via WhatsApp",
+        "AI agents monitor payment status, send polite reminders, and update invoice records.",
     },
     {
       icon: <Users className="h-8 w-8 text-primary" />,
-      title: "Revenue Analytics",
-      description:
-        "Real-time dashboard showing revenue trends and business performance metrics",
+      title: "Predictive Analytics",
+      description: "ML-powered cash-flow forecasting and late-payer detection.",
     },
   ];
 
   const hmsKits = [
     {
-      name: "HMS Account Kit",
-      description: "Secure user authentication and account management",
+      name: "HMS ML Kit (OCR Service)",
+      description:
+        "Extracts payment details from uploaded or WhatsApp receipt images for automatic invoice–payment matching.",
     },
     {
       name: "HMS Push Kit",
-      description: "Real-time notifications for invoice status updates",
+      description:
+        "Sends real-time notifications for invoice approval, payment reminders, and verification updates.",
     },
     {
-      name: "HMS ML Kit",
-      description: "AI-powered features for intelligent invoice processing",
+      name: "HMS Cloud DB",
+      description:
+        "Stores invoices, payment records, and transaction data securely in Huawei Cloud.",
     },
     {
-      name: "HMS Analytics Kit",
-      description: "Detailed insights into app usage and user behavior",
+      name: "HMS Account Kit",
+      description:
+        "Simplifies user login/registration via Huawei ID for merchants and customers.",
     },
   ];
 
@@ -115,13 +123,18 @@ const Landing = () => {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <span className="text-xl font-bold text-primary">e-Invoice</span>
+          <div className="grid grid-cols-3 items-center h-16">
+            <div className="flex items-center gap-2">
+              <img
+                src="/logo.png"
+                alt="BilCekap logo"
+                className="h-10 w-10 rounded"
+              />
+              <span className="text-xl font-bold text-primary">BilCekap</span>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex justify-center space-x-8">
               {navItems.map((item) => (
                 <button
                   key={item.id}
@@ -137,16 +150,12 @@ const Landing = () => {
               ))}
             </div>
 
-            <div className="hidden md:block">
-              <Button onClick={() => scrollToSection("mvp")}>
-                Get Started
-              </Button>
-            </div>
+            {/* removed CTA button */}
 
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-foreground"
+              className="col-start-3 justify-self-end md:hidden text-foreground"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -174,14 +183,6 @@ const Landing = () => {
                   {item.label}
                 </button>
               ))}
-              <div className="px-3 py-2">
-                <Button
-                  className="w-full"
-                  onClick={() => scrollToSection("mvp")}
-                >
-                  Get Started
-                </Button>
-              </div>
             </div>
           </div>
         )}
@@ -232,29 +233,13 @@ const Landing = () => {
       >
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
-            Modern e-Invoice Solution
+            BilCekap
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Streamline your invoicing process with government-verified
-            e-invoices, AI-powered delivery, and real-time analytics
+            Streamline your invoicing process with smart receipt verification,
+            automated follow-ups, and agentic payment tracking.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto"
-              onClick={() => scrollToSection("mvp")}
-            >
-              Get Started
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => scrollToSection("background")}
-              className="w-full sm:w-auto"
-            >
-              Learn More
-            </Button>
-          </div>
+          {/* removed hero CTA buttons */}
         </div>
       </section>
 
@@ -340,13 +325,17 @@ const Landing = () => {
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12 text-center">
             Meet Our Team
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-stretch justify-center max-w-3xl mx-auto">
             {teamMembers.map((member, index) => (
               <Card
                 key={index}
-                className="p-6 border-none shadow-sm text-center"
+                className="p-6 border-none shadow-sm text-center w-full h-full max-w-sm flex flex-col items-center"
               >
-                <div className="text-6xl mb-4">{member.avatar}</div>
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-32 h-32 md:w-36 md:h-36 rounded-full object-cover mx-auto mb-4"
+                />
                 <h3 className="text-lg font-semibold text-foreground mb-1">
                   {member.name}
                 </h3>
@@ -360,13 +349,15 @@ const Landing = () => {
       {/* Footer */}
       <footer className="bg-accent/20 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+            <div className="col-span-2 md:col-span-1">
               <h3 className="text-lg font-semibold text-foreground mb-4">
-                e-Invoice
+                BilCekap
               </h3>
               <p className="text-sm text-muted-foreground">
-                Modern invoicing solution powered by HMS Core
+                Streamline your invoicing process with smart receipt
+                verification, automated follow-ups, and agentic payment
+                tracking.
               </p>
             </div>
             <div>
@@ -374,6 +365,14 @@ const Landing = () => {
                 Quick Links
               </h3>
               <ul className="space-y-2">
+                <li>
+                  <button
+                    onClick={() => scrollToSection("hero")}
+                    className="text-sm text-muted-foreground hover:text-primary"
+                  >
+                    Home
+                  </button>
+                </li>
                 <li>
                   <button
                     onClick={() => scrollToSection("background")}
@@ -406,27 +405,19 @@ const Landing = () => {
               </h3>
               <ul className="space-y-2">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/privacy"
                     className="text-sm text-muted-foreground hover:text-primary"
                   >
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/faq"
                     className="text-sm text-muted-foreground hover:text-primary"
                   >
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-sm text-muted-foreground hover:text-primary"
-                  >
-                    Cookie Policy
+                    FAQ
                   </a>
                 </li>
               </ul>
@@ -434,7 +425,7 @@ const Landing = () => {
           </div>
           <div className="border-t pt-8 text-center">
             <p className="text-sm text-muted-foreground">
-              © 2024 e-Invoice. All rights reserved.
+              © 2025 BilCekap. All rights reserved.
             </p>
           </div>
         </div>
