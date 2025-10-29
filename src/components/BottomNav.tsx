@@ -16,9 +16,9 @@ const BottomNav = () => {
             variant="ghost"
             size="icon"
             className={`flex flex-col h-14 w-14 gap-1 ${
-              isActive("/") ? "text-primary" : "text-muted-foreground"
+              isActive("/dashboard") ? "text-primary" : "text-muted-foreground"
             }`}
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/dashboard")}
           >
             <Home className="h-5 w-5" />
             <span className="text-xs">Home</span>
