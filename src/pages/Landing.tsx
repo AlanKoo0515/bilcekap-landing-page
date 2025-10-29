@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Menu, X, Download, Users, Target, Package, Shield } from "lucide-react";
-import { Link } from "react-router-dom";
+import {
+  Menu,
+  X,
+  Download,
+  Users,
+  Target,
+  Package,
+  Shield,
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Landing = () => {
@@ -29,7 +36,10 @@ const Landing = () => {
         if (element) {
           const offsetTop = element.offsetTop;
           const height = element.offsetHeight;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + height
+          ) {
             setActiveSection(section);
             break;
           }
@@ -52,30 +62,32 @@ const Landing = () => {
   const teamMembers = [
     { name: "John Doe", role: "Project Lead", avatar: "👨‍💼" },
     { name: "Jane Smith", role: "Lead Developer", avatar: "👩‍💻" },
-    { name: "Mike Johnson", role: "UI/UX Designer", avatar: "👨‍🎨" },
-    { name: "Sarah Lee", role: "Backend Developer", avatar: "👩‍💻" },
   ];
 
   const mvpFeatures = [
     {
       icon: <Target className="h-8 w-8 text-primary" />,
       title: "Invoice Creation",
-      description: "Create professional invoices with all necessary details directly from your mobile device",
+      description:
+        "Create professional invoices with all necessary details directly from your mobile device",
     },
     {
       icon: <Shield className="h-8 w-8 text-primary" />,
       title: "Government Verification",
-      description: "Automatic verification through government portal with secure QR code generation",
+      description:
+        "Automatic verification through government portal with secure QR code generation",
     },
     {
       icon: <Package className="h-8 w-8 text-primary" />,
       title: "AI-Powered Delivery",
-      description: "Intelligent agent automatically sends verified e-invoices to customers via WhatsApp",
+      description:
+        "Intelligent agent automatically sends verified e-invoices to customers via WhatsApp",
     },
     {
       icon: <Users className="h-8 w-8 text-primary" />,
       title: "Revenue Analytics",
-      description: "Real-time dashboard showing revenue trends and business performance metrics",
+      description:
+        "Real-time dashboard showing revenue trends and business performance metrics",
     },
   ];
 
@@ -115,7 +127,9 @@ const Landing = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`text-sm font-medium transition-colors hover:text-primary ${
-                    activeSection === item.id ? "text-primary" : "text-muted-foreground"
+                    activeSection === item.id
+                      ? "text-primary"
+                      : "text-muted-foreground"
                   }`}
                 >
                   {item.label}
@@ -124,9 +138,9 @@ const Landing = () => {
             </div>
 
             <div className="hidden md:block">
-              <Link to="/dashboard">
-                <Button>Get Started</Button>
-              </Link>
+              <Button onClick={() => scrollToSection("mvp")}>
+                Get Started
+              </Button>
             </div>
 
             {/* Mobile menu button */}
@@ -134,7 +148,11 @@ const Landing = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden text-foreground"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -157,9 +175,12 @@ const Landing = () => {
                 </button>
               ))}
               <div className="px-3 py-2">
-                <Link to="/dashboard">
-                  <Button className="w-full">Get Started</Button>
-                </Link>
+                <Button
+                  className="w-full"
+                  onClick={() => scrollToSection("mvp")}
+                >
+                  Get Started
+                </Button>
               </div>
             </div>
           </div>
@@ -172,15 +193,18 @@ const Landing = () => {
           <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 flex-1 justify-center flex-wrap">
               <Download className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
-              <span className="text-xs sm:text-sm font-medium">Available on Huawei AppGallery</span>
-              <Button 
-                size="sm" 
-                variant="secondary" 
+              <span className="text-xs sm:text-sm font-medium">
+                Available on Huawei AppGallery
+              </span>
+              <Button
+                size="sm"
+                variant="secondary"
                 className="text-xs sm:text-sm"
                 onClick={() => {
                   toast({
                     title: "Coming Soon",
-                    description: "The app will be available on Huawei AppGallery soon!",
+                    description:
+                      "The app will be available on Huawei AppGallery soon!",
                   });
                 }}
               >
@@ -200,22 +224,34 @@ const Landing = () => {
       )}
 
       {/* Hero Section */}
-      <section id="hero" className={`${showBanner ? 'pt-44' : 'pt-32'} pb-20 px-4 sm:px-6 lg:px-8 transition-all duration-300`}>
+      <section
+        id="hero"
+        className={`${
+          showBanner ? "pt-44" : "pt-32"
+        } pb-20 px-4 sm:px-6 lg:px-8 transition-all duration-300`}
+      >
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
             Modern e-Invoice Solution
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Streamline your invoicing process with government-verified e-invoices, 
-            AI-powered delivery, and real-time analytics
+            Streamline your invoicing process with government-verified
+            e-invoices, AI-powered delivery, and real-time analytics
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/dashboard">
-              <Button size="lg" className="w-full sm:w-auto">
-                Get Started
-              </Button>
-            </Link>
-            <Button size="lg" variant="outline" onClick={() => scrollToSection("background")} className="w-full sm:w-auto">
+            <Button
+              size="lg"
+              className="w-full sm:w-auto"
+              onClick={() => scrollToSection("mvp")}
+            >
+              Get Started
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => scrollToSection("background")}
+              className="w-full sm:w-auto"
+            >
               Learn More
             </Button>
           </div>
@@ -223,23 +259,28 @@ const Landing = () => {
       </section>
 
       {/* Background Section */}
-      <section id="background" className="py-20 px-4 sm:px-6 lg:px-8 bg-accent/10">
+      <section
+        id="background"
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-accent/10"
+      >
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 text-center">
             Project Background
           </h2>
           <div className="space-y-4 text-muted-foreground">
             <p className="text-lg">
-              Our e-Invoice application revolutionizes the way businesses handle invoicing by 
-              integrating cutting-edge technology with government compliance systems. Built to 
-              meet the demands of modern businesses, our platform combines ease of use with 
-              powerful automation.
+              Our e-Invoice application revolutionizes the way businesses handle
+              invoicing by integrating cutting-edge technology with government
+              compliance systems. Built to meet the demands of modern
+              businesses, our platform combines ease of use with powerful
+              automation.
             </p>
             <p className="text-lg">
-              By leveraging Huawei Mobile Services (HMS) Core, we provide a secure, reliable, 
-              and feature-rich experience that empowers businesses to create, verify, and 
-              deliver invoices seamlessly. Our mission is to simplify invoice management while 
-              ensuring full compliance with government regulations.
+              By leveraging Huawei Mobile Services (HMS) Core, we provide a
+              secure, reliable, and feature-rich experience that empowers
+              businesses to create, verify, and deliver invoices seamlessly. Our
+              mission is to simplify invoice management while ensuring full
+              compliance with government regulations.
             </p>
           </div>
         </div>
@@ -253,12 +294,17 @@ const Landing = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {mvpFeatures.map((feature, index) => (
-              <Card key={index} className="p-6 border-none shadow-sm hover:shadow-md transition-shadow">
+              <Card
+                key={index}
+                className="p-6 border-none shadow-sm hover:shadow-md transition-shadow"
+              >
                 <div className="mb-4">{feature.icon}</div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <p className="text-sm text-muted-foreground">
+                  {feature.description}
+                </p>
               </Card>
             ))}
           </div>
@@ -272,13 +318,15 @@ const Landing = () => {
             Powered by HMS Core
           </h2>
           <p className="text-lg text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
-            Our application integrates multiple Huawei Mobile Services to provide a robust and 
-            feature-rich experience
+            Our application integrates multiple Huawei Mobile Services to
+            provide a robust and feature-rich experience
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {hmsKits.map((kit, index) => (
               <Card key={index} className="p-6 border-none shadow-sm">
-                <h3 className="text-xl font-semibold text-foreground mb-3">{kit.name}</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  {kit.name}
+                </h3>
                 <p className="text-muted-foreground">{kit.description}</p>
               </Card>
             ))}
@@ -294,7 +342,10 @@ const Landing = () => {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="p-6 border-none shadow-sm text-center">
+              <Card
+                key={index}
+                className="p-6 border-none shadow-sm text-center"
+              >
                 <div className="text-6xl mb-4">{member.avatar}</div>
                 <h3 className="text-lg font-semibold text-foreground mb-1">
                   {member.name}
@@ -311,46 +362,70 @@ const Landing = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">e-Invoice</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                e-Invoice
+              </h3>
               <p className="text-sm text-muted-foreground">
                 Modern invoicing solution powered by HMS Core
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Quick Links</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Quick Links
+              </h3>
               <ul className="space-y-2">
                 <li>
-                  <button onClick={() => scrollToSection("background")} className="text-sm text-muted-foreground hover:text-primary">
+                  <button
+                    onClick={() => scrollToSection("background")}
+                    className="text-sm text-muted-foreground hover:text-primary"
+                  >
                     About
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => scrollToSection("mvp")} className="text-sm text-muted-foreground hover:text-primary">
+                  <button
+                    onClick={() => scrollToSection("mvp")}
+                    className="text-sm text-muted-foreground hover:text-primary"
+                  >
                     Features
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => scrollToSection("team")} className="text-sm text-muted-foreground hover:text-primary">
+                  <button
+                    onClick={() => scrollToSection("team")}
+                    className="text-sm text-muted-foreground hover:text-primary"
+                  >
                     Team
                   </button>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Legal</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Legal
+              </h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                  <a
+                    href="#"
+                    className="text-sm text-muted-foreground hover:text-primary"
+                  >
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                  <a
+                    href="#"
+                    className="text-sm text-muted-foreground hover:text-primary"
+                  >
                     Terms of Service
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+                  <a
+                    href="#"
+                    className="text-sm text-muted-foreground hover:text-primary"
+                  >
                     Cookie Policy
                   </a>
                 </li>
