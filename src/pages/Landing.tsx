@@ -118,6 +118,24 @@ const Landing = () => {
     },
   ];
 
+  const agcServices = [
+    {
+      name: "Cloud DB",
+      description:
+        "Serverless NoSQL database for syncing app data securely across devices in real time.",
+    },
+    {
+      name: "Auth Service",
+      description:
+        "Unified sign-in with Huawei ID and standard auth flows to simplify user onboarding.",
+    },
+    {
+      name: "In-App Purchase",
+      description:
+        "Monetize with secure subscriptions and one-time purchases via AppGallery billing.",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navbar */}
@@ -319,8 +337,31 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* AppGallery Connect Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 text-center">
+            AppGallery Connect
+          </h2>
+          <p className="text-lg text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
+            Build, release, and grow faster with integrated cloud services from
+            AppGallery Connect.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {agcServices.map((svc, index) => (
+              <Card key={index} className="p-6 border-none shadow-sm">
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  {svc.name}
+                </h3>
+                <p className="text-muted-foreground">{svc.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Team Section */}
-      <section id="team" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="team" className="py-20 px-4 sm:px-6 lg:px-8 bg-accent/10">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12 text-center">
             Meet Our Team
@@ -347,7 +388,7 @@ const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-accent/20 py-12 px-4 sm:px-6 lg:px-8">
+      <footer className="bg-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8">
             <div className="col-span-2 md:col-span-1">

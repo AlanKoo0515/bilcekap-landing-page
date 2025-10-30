@@ -71,18 +71,25 @@ const FAQ = () => {
       {/* Body */}
       <div className="pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <div className="relative mb-6 flex items-center justify-center">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="absolute left-0"
-              onClick={() => navigate(-1)}
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" /> Back
-            </Button>
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground text-center">
-              Frequently Asked Questions
-            </h1>
+          <div className="mb-6">
+            <div className="mb-3 md:hidden">
+              <Button variant="ghost" size="sm" onClick={() => navigate(-1)}>
+                <ArrowLeft className="h-4 w-4 mr-2" /> Back
+              </Button>
+            </div>
+            <div className="relative flex items-center justify-center">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="absolute left-0 hidden md:inline-flex"
+                onClick={() => navigate(-1)}
+              >
+                <ArrowLeft className="h-4 w-4 mr-2" /> Back
+              </Button>
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground text-center">
+                Frequently Asked Questions
+              </h1>
+            </div>
           </div>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
