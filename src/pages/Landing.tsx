@@ -64,9 +64,9 @@ const Landing = () => {
     {
       name: "Alpha Chong Shu Siang",
       role: "Project Lead",
-      image: "/alpha.jpeg",
+      image: "/alpha.webp",
     },
-    { name: "Koo Ming Zhe", role: "Lead Developer", image: "/mz.JPG" },
+    { name: "Koo Ming Zhe", role: "Lead Developer", image: "/mz.webp" },
   ];
 
   const mvpFeatures = [

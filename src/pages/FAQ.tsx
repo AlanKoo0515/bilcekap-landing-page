@@ -23,7 +23,10 @@ const FAQ = () => {
           <div className="grid grid-cols-3 items-center h-16">
             <div className="flex items-center gap-2">
               <img
-                src="/logo.png"
+                src="/logo.webp"
+                width={40}
+                height={40}
+                loading="eager"
                 alt="BilCekap logo"
                 className="h-10 w-10 rounded"
               />
