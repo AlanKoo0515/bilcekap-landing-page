@@ -454,12 +454,12 @@ const Landing = () => {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href="/faq"
+                  <Link
+                    to="/faq"
                     className="text-sm text-muted-foreground hover:text-primary"
                   >
                     FAQ
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
