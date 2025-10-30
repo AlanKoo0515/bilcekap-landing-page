@@ -97,7 +97,7 @@ const Landing = () => {
 
   const hmsKits = [
     {
-      name: "HMS ML Kit (OCR Service)",
+      name: "HMS ML Kit",
       description:
         "Extracts payment details from uploaded or WhatsApp receipt images for automatic invoice–payment matching.",
     },
@@ -107,9 +107,9 @@ const Landing = () => {
         "Sends real-time notifications for invoice approval, payment reminders, and verification updates.",
     },
     {
-      name: "HMS Cloud DB",
+      name: "HMS Analytic Kit",
       description:
-        "Stores invoices, payment records, and transaction data securely in Huawei Cloud.",
+        "Tracks user behavior, payment trends, and app performance for business insights and dashboard metrics.",
     },
     {
       name: "HMS Account Kit",
