@@ -116,6 +116,16 @@ const Landing = () => {
       description:
         "Simplifies user login/registration via Huawei ID for merchants and customers.",
     },
+    {
+      name: "HMS Ads Kit",
+      description:
+        "Displays targeted in-app promotions or cross-service campaigns, creating an additional revenue stream.",
+    },
+    {
+      name: "In-App Purchase",
+      description:
+        "Monetize with secure subscriptions and one-time purchases via AppGallery billing.",
+    },
   ];
 
   const agcServices = [
@@ -128,11 +138,6 @@ const Landing = () => {
       name: "Auth Service",
       description:
         "Unified sign-in with Huawei ID and standard auth flows to simplify user onboarding.",
-    },
-    {
-      name: "In-App Purchase",
-      description:
-        "Monetize with secure subscriptions and one-time purchases via AppGallery billing.",
     },
   ];
 
