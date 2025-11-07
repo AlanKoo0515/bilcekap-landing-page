@@ -332,7 +332,7 @@ const PrivacyPolicy = () => {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    to="/privacy"
+                    to="/privacy-policy"
                     className="text-sm text-muted-foreground hover:text-primary"
                   >
                     Privacy Policy
